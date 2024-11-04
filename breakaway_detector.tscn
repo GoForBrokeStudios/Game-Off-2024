@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwr6xbbsbi80i"]
+
+[ext_resource type="Script" path="res://breakaway_detector.gd" id="1_odds6"]
+
+[node name="Breakaway Detector" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_odds6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
