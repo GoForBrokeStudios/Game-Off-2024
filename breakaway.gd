@@ -1,6 +1,9 @@
 extends Area2D
 
-@onready var secret_layer = get_parent().find_child("Secrets")
+@export var secret_layer : TileMapLayer
 
 func _on_body_entered(body):
+	secret_layer.visible = !secret_layer.visible
+
+func _on_body_exited(body):
 	secret_layer.visible = !secret_layer.visible
