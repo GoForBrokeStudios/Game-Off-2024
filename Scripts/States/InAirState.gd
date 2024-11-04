@@ -9,6 +9,11 @@ func _ready():
 func enter():
 	sprite.play("in_air")
 	print("Enter " + name + " state")
+	
+	# Starts Coyote Timer if Jump is available
+	if player.jump_available == true:
+			if player.coyote_timer.is_stopped():
+				player.coyote_timer.start(player.coyote_time)
 
 func update(_delta:float):
 	if player.is_on_floor():
@@ -19,6 +24,9 @@ func update(_delta:float):
 		player.velocity.x = direction * player.SPEED
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
+		
+	if Input.is_action_just_pressed("Jump"):
+		get_parent().change_state(self, "JumpState")
 		
 	if Input.is_action_just_pressed("Dive") && player.velocity.x != 0:
 		player.last_direction = direction

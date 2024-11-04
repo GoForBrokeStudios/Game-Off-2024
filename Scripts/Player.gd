@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var sprite : AnimatedSprite2D
+@onready var coyote_timer = $CoyoteTimer
 
 const SPEED = 150.0
 const IN_AIR_SPEED = 100.0
@@ -11,10 +12,15 @@ const ROLL_VELOCITY = 50.0
 @export var jump_height : float
 @export var jump_time_to_peak : float
 @export var jump_time_to_descend : float
+@export var coyote_time : float = 0.1
+@export var jump_buffer_time : float = 0.1
 
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descend * jump_time_to_descend)) * -1
+
+var jump_available: bool = true
+var jump_buffer: bool = false
 
 @export var camera: Camera2D
 
@@ -66,7 +72,13 @@ func _physics_process(delta):
 		global_position.y = top_bound - player_size.y/2
 	
 func jump():
+	if not jump_available:
+		jump_buffer = true
+		get_tree().create_timer(jump_buffer_time).timeout.connect(on_jump_buffer_timeout)
+		return
+	
 	velocity.y = jump_velocity
+	jump_available = false
 	
 func find_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
@@ -84,3 +96,9 @@ func get_camera_size() -> Vector2:
 		view_size.x / camera.zoom.x,
 		view_size.y / camera.zoom.y
 	)
+
+func coyote_timeout():
+	jump_available = false
+	
+func on_jump_buffer_timeout():
+	jump_buffer = false

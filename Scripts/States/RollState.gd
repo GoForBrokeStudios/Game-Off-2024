@@ -18,6 +18,10 @@ func update(delta:float):
 	else:
 		get_parent().change_state(self, "IdleState")
 		
+	if Input.is_action_just_pressed("Jump"):
+		player.jump()
+		get_parent().change_state(self, "DiveState")
+		
 	if Input.is_action_just_pressed("MoveRight"):
 		if last_direction > 0:
 			player.velocity.x += player.ROLL_VELOCITY
@@ -28,10 +32,6 @@ func update(delta:float):
 			player.velocity.x -= player.ROLL_VELOCITY
 		else:
 			get_parent().change_state(self, "WalkState")
-	
-	if Input.is_action_just_pressed("Jump"):
-		player.jump()
-		get_parent().change_state(self, "DiveState")
 
 func exit():
 	pass
