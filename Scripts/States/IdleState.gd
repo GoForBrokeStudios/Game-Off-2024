@@ -19,7 +19,7 @@ func enter():
 		
 	# Checks if player presses jump right before landing
 	if player.jump_buffer:
-		player.jump()
+		get_parent().change_state(self, "JumpState")
 		player.jump_buffer = false
 
 func update(_delta:float):

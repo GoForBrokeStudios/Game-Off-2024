@@ -17,7 +17,7 @@ func enter():
 		
 	# Checks if player presses jump right before landing
 	if player.jump_buffer:
-		player.jump()
+		jump()
 		player.jump_buffer = false
 	
 func update(delta:float):
@@ -29,7 +29,7 @@ func update(delta:float):
 		get_parent().change_state(self, "IdleState")
 		
 	if Input.is_action_just_pressed("Jump"):
-		player.jump()
+		jump()
 		get_parent().change_state(self, "DiveState")
 		
 	if Input.is_action_just_pressed("MoveRight"):
@@ -45,3 +45,12 @@ func update(delta:float):
 
 func exit():
 	pass
+
+func jump():
+	if not player.jump_available:
+		player.jump_buffer = true
+		get_tree().create_timer(player.jump_buffer_time).timeout.connect(player.on_jump_buffer_timeout)
+		return
+	
+	player.velocity.y = player.jump_velocity
+	player.jump_available = false

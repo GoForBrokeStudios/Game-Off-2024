@@ -3,16 +3,26 @@ class_name WallJumpState
 
 @export var sprite : AnimatedSprite2D
 
+@onready var wall_jump_timer = $WallJumpTimer
+
 func _ready():
 	player = get_parent().get_parent()
 
 func enter():
 	sprite.play("in_air")
 	print("Enter " + name + " state")
-	player.jump();
+	
+	player.velocity = player.get_wall_normal() * 200.0
+	player.velocity.y = player.jump_velocity * 0.7
+	wall_jump_timer.start()
 	
 func update(_delta:float):
-	get_parent().change_state(self, "InAirState")
+	if player.is_on_wall():
+		wall_jump_timer.stop()
+		get_parent().change_state(self, "WallSlideState")
 
 func exit():
-	pass
+	wall_jump_timer.stop()
+
+func _on_wall_jump_timer_timeout():
+	get_parent().change_state(self, "InAirState")

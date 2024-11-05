@@ -174,9 +174,7 @@ jump_time_to_descend = 0.4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_10h70")
-animation = &"roll"
-frame = 2
-frame_progress = 0.413388
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -218,6 +216,11 @@ sprite = NodePath("../../AnimatedSprite2D")
 script = ExtResource("11_jvi23")
 sprite = NodePath("../../AnimatedSprite2D")
 
+[node name="WallJumpTimer" type="Timer" parent="StateMachine/WallJumpState"]
+wait_time = 0.4
+
 [node name="CoyoteTimer" type="Timer" parent="."]
 
+[connection signal="timeout" from="StateMachine/WallJumpState/WallJumpTimer" to="." method="_on_wall_jump_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WallJumpState/WallJumpTimer" to="StateMachine/WallJumpState" method="_on_wall_jump_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="coyote_timeout"]
