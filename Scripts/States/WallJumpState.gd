@@ -1,5 +1,5 @@
 extends State
-class_name JumpState
+class_name WallJumpState
 
 @export var sprite : AnimatedSprite2D
 
@@ -9,11 +9,10 @@ func _ready():
 func enter():
 	sprite.play("in_air")
 	print("Enter " + name + " state")
-	player.jump()
-
+	player.jump();
+	
 func update(_delta:float):
 	get_parent().change_state(self, "InAirState")
-	pass
 
 func exit():
 	pass

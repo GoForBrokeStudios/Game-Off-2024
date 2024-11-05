@@ -24,8 +24,13 @@ func update(_delta:float):
 		player.velocity.x = direction * player.SPEED
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
+	
+	if player.is_on_wall() and direction:
+		player.last_direction = direction
+		get_parent().change_state(self, "WallSlideState")
 		
 	if Input.is_action_just_pressed("Jump"):
+		# The player will only jump if the jump_available is true (Jump Buffer)
 		get_parent().change_state(self, "JumpState")
 		
 	if Input.is_action_just_pressed("Dive") && player.velocity.x != 0:

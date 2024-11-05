@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var sprite : AnimatedSprite2D
+@onready var state_machine = $StateMachine
 @onready var coyote_timer = $CoyoteTimer
 
 const SPEED = 150.0
@@ -72,6 +73,11 @@ func _physics_process(delta):
 		global_position.y = top_bound - player_size.y/2
 	
 func jump():
+	if state_machine.current_state == WallJumpState:
+		velocity = get_wall_normal() * 50.0
+		velocity.y = jump_velocity
+		return
+		
 	if not jump_available:
 		jump_buffer = true
 		get_tree().create_timer(jump_buffer_time).timeout.connect(on_jump_buffer_timeout)
@@ -79,7 +85,7 @@ func jump():
 	
 	velocity.y = jump_velocity
 	jump_available = false
-	
+
 func find_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 	
