@@ -6,7 +6,6 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 const IN_AIR_SPEED = 100.0
-#const JUMP_VELOCITY = -300.0
 const DIVE_VELOCITY = 250.0
 const ROLL_VELOCITY = 50.0
 
