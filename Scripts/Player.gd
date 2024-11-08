@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name PlayerController
 
 @export var sprite : AnimatedSprite2D
 @onready var state_machine = $StateMachine
@@ -71,10 +72,10 @@ func _physics_process(delta):
 func find_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 	
-func check_if_should_flip(direction):
-	if direction > 0:
+func check_if_should_flip(dir):
+	if dir > 0:
 		sprite.flip_h = false
-	elif direction < 0:
+	elif dir < 0:
 		sprite.flip_h = true
 
 func get_camera_size() -> Vector2:

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="2D Platformer Controller Demo"
-run/main_scene="res://Scenes/Levels/world.tscn"
+run/main_scene="res://Scenes/Levels/level_1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Scripts/game_manager.gd"
 
 [display]
 
@@ -42,6 +46,10 @@ Dive={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(170, 23),"global_position":Vector2(179, 69),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_17="transitions"
 
 [rendering]
 
