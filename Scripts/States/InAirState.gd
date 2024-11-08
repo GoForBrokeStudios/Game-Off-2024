@@ -20,12 +20,13 @@ func update(_delta:float):
 		get_parent().change_state(self, "IdleState")
 	
 	var direction = Input.get_axis("MoveLeft", "MoveRight")
+	player.check_if_should_flip(direction)
 	if direction:
 		player.velocity.x = direction * player.SPEED
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
 	
-	if player.is_on_wall() and direction:
+	if player.is_on_wall() and player.can_wall_jump && direction:
 		player.last_direction = direction
 		get_parent().change_state(self, "WallSlideState")
 		

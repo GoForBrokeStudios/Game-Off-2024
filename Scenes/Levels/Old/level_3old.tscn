@@ -384,7 +384,6 @@ offset_bottom = 577.0
 position = Vector2(-156, 296)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_jkphr")]
-z_index = 9
 position = Vector2(-653, 264)
 camera = NodePath("../Camera2D")
 

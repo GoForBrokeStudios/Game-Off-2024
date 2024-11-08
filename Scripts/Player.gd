@@ -35,6 +35,8 @@ var right_bound : float
 var top_bound : float
 var bottom_bound : float
 
+var can_wall_jump : bool = false
+
 func _ready():
 	screen_size = get_camera_size()
 	if sprite.sprite_frames:
@@ -78,6 +80,9 @@ func check_if_should_flip(dir):
 	elif dir < 0:
 		sprite.flip_h = true
 
+func flip():
+	sprite.flip_h = !sprite.flip_h
+
 func get_camera_size() -> Vector2:
 	# Get the camera's view size based on zoom level
 	var view_size = get_viewport_rect().size
@@ -91,3 +96,10 @@ func coyote_timeout():
 	
 func on_jump_buffer_timeout():
 	jump_buffer = false
+
+
+func _on_wall_jump_area_body_entered(body):
+	can_wall_jump = true
+
+func _on_wall_jump_area_body_exited(body):
+	can_wall_jump = false

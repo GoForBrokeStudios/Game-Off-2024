@@ -8,8 +8,8 @@ font_size = 32
 [node name="HUD" type="Control" node_paths=PackedStringArray("stopwatch_label")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1154.0
-offset_bottom = 645.0
+offset_right = 1152.0
+offset_bottom = 648.0
 script = ExtResource("1_v38e2")
 stopwatch_label = NodePath("StopwatchLabel")
 
@@ -18,9 +18,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -164.0
-offset_right = -2.0
-offset_bottom = 54.0
+offset_left = -192.0
+offset_top = 13.0
+offset_right = -30.0
+offset_bottom = 67.0
 grow_horizontal = 0
 text = "00:00:000"
 label_settings = SubResource("LabelSettings_4g3ba")

@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bih1ajdalmj18"]
+[gd_scene load_steps=15 format=4 uid="uid://bih1ajdalmj18"]
 
+[ext_resource type="PackedScene" uid="uid://d338oxoi3k48c" path="res://Scenes/transition_scenes.tscn" id="1_0eu5e"]
+[ext_resource type="PackedScene" uid="uid://bv2ut8rjq20vf" path="res://Scenes/hud.tscn" id="1_4j006"]
 [ext_resource type="PackedScene" uid="uid://budqe1q26pyve" path="res://Scenes/Objects/goal.tscn" id="1_4qqja"]
 [ext_resource type="PackedScene" uid="uid://bwd5gl3raybvo" path="res://Scenes/player.tscn" id="1_ephms"]
+[ext_resource type="PackedScene" uid="uid://dwtwc421hg7l0" path="res://Scenes/stopwatch.tscn" id="2_tlyrg"]
 [ext_resource type="Texture2D" uid="uid://dfgf6nk12ivye" path="res://Sprites/Tileset 64x64.png" id="2_umqtb"]
 [ext_resource type="PackedScene" uid="uid://ygo361fam7ou" path="res://Scenes/Darkness.tscn" id="4_wovg1"]
 
@@ -126,6 +129,15 @@ sources/0 = SubResource("TileSetAtlasSource_kuslk")
 
 [node name="level_template" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_4j006")]
+
+[node name="Stopwatch" parent="CanvasLayer/HUD" instance=ExtResource("2_tlyrg")]
+
+[node name="TransitionScenes" parent="." instance=ExtResource("1_0eu5e")]
+visible = false
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
 
@@ -154,4 +166,5 @@ tile_map_data = PackedByteArray("AAD5/wEAAAABAAIAAAD6/wEAAAABAAIAAAD7/wEAAAABAAI
 tile_set = SubResource("TileSet_8sl4b")
 
 [node name="Darkness" parent="." instance=ExtResource("4_wovg1")]
+unique_name_in_owner = true
 position = Vector2(-29, -101)

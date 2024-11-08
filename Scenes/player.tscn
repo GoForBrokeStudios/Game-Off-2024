@@ -14,9 +14,9 @@
 [ext_resource type="Script" path="res://Scripts/States/WallSlideState.gd" id="10_etbq6"]
 [ext_resource type="Script" path="res://Scripts/States/WallJumpState.gd" id="11_jvi23"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qyo35"]
-atlas = ExtResource("2_dpg45")
-region = Rect2(250, 74, 50, 37)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl3kx"]
+atlas = ExtResource("4_8755e")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x76pr"]
 atlas = ExtResource("3_bhq8e")
@@ -26,13 +26,9 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("3_bhq8e")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_crnw3"]
-atlas = ExtResource("2_dpg45")
-region = Rect2(50, 111, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ocgxg"]
-atlas = ExtResource("2_dpg45")
-region = Rect2(100, 111, 50, 37)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pb6t"]
+atlas = ExtResource("4_8755e")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lem7n"]
 atlas = ExtResource("2_dpg45")
@@ -86,7 +82,7 @@ region = Rect2(448, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qyo35")
+"texture": SubResource("AtlasTexture_hl3kx")
 }],
 "loop": true,
 "name": &"dive",
@@ -105,10 +101,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_crnw3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ocgxg")
+"texture": SubResource("AtlasTexture_6pb6t")
 }],
 "loop": true,
 "name": &"in_air",
@@ -165,6 +158,9 @@ animations = [{
 radius = 16.0
 height = 56.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qk6"]
+size = Vector2(53.0769, 26.1538)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 z_index = 9
 scale = Vector2(1.3, 1.3)
@@ -179,8 +175,8 @@ jump_time_to_descend = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_10h70")
-animation = &"walk"
-frame_progress = 0.0884501
+animation = &"in_air"
+frame_progress = 0.588252
 
 [node name="OlSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -205,15 +201,15 @@ sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="JumpState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
 script = ExtResource("6_ifv8m")
-sprite = NodePath("../../OlSprite")
+sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="InAirState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
 script = ExtResource("7_jkb0k")
-sprite = NodePath("../../OlSprite")
+sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="DiveState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
 script = ExtResource("8_lsqns")
-sprite = NodePath("../../OlSprite")
+sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="RollState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_6j2xk")
@@ -232,6 +228,14 @@ wait_time = 0.4
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 
+[node name="WallJumpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallJumpArea"]
+position = Vector2(-2.69231, 3.07692)
+shape = SubResource("RectangleShape2D_k1qk6")
+
 [connection signal="timeout" from="StateMachine/WallJumpState/WallJumpTimer" to="." method="_on_wall_jump_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WallJumpState/WallJumpTimer" to="StateMachine/WallJumpState" method="_on_wall_jump_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="coyote_timeout"]
+[connection signal="body_entered" from="WallJumpArea" to="." method="_on_wall_jump_area_body_entered"]
+[connection signal="body_exited" from="WallJumpArea" to="." method="_on_wall_jump_area_body_exited"]

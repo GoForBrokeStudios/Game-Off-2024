@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=4 uid="uid://dgbiu8xtp5vjn"]
+[gd_scene load_steps=3 format=4 uid="uid://dgbiu8xtp5vjn"]
 
 [ext_resource type="PackedScene" uid="uid://bih1ajdalmj18" path="res://Scenes/Levels/level_template.tscn" id="1_6esfk"]
+[ext_resource type="PackedScene" uid="uid://c54ggyhxxgh08" path="res://Scenes/Objects/torch.tscn" id="3_46jcq"]
 
 [node name="level_2" instance=ExtResource("1_6esfk")]
 
-[node name="Goal" parent="." index="2"]
+[node name="Goal" parent="." index="4"]
 position = Vector2(-58, -337)
 
 [node name="Background" parent="TileMap" index="0"]
@@ -15,3 +16,6 @@ tile_map_data = PackedByteArray("AADw/wUAAAABAAIAAADw/wYAAAAAAAAAAADx/wUAAAABAAI
 
 [node name="SecretArea" parent="TileMap" index="2"]
 tile_map_data = PackedByteArray()
+
+[node name="Torch" parent="." index="7" groups=["torches"] instance=ExtResource("3_46jcq")]
+position = Vector2(604, 167)

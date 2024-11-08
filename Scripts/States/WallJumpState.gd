@@ -9,6 +9,7 @@ func _ready():
 	player = get_parent().get_parent()
 
 func enter():
+	player.flip()
 	sprite.play("in_air")
 	print("Enter " + name + " state")
 	
