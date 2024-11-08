@@ -12,8 +12,8 @@ func enter():
 	sprite.play("in_air")
 	print("Enter " + name + " state")
 	
-	player.velocity = player.get_wall_normal() * 200.0
-	player.velocity.y = player.jump_velocity * 0.7
+	player.velocity = player.get_wall_normal() * 800.0
+	player.velocity.y = player.jump_velocity * 0.8
 	wall_jump_timer.start()
 	
 func update(_delta:float):

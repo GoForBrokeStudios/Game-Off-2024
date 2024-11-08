@@ -4,10 +4,10 @@ extends CharacterBody2D
 @onready var state_machine = $StateMachine
 @onready var coyote_timer = $CoyoteTimer
 
-const SPEED = 150.0
-const IN_AIR_SPEED = 100.0
-const DIVE_VELOCITY = 250.0
-const ROLL_VELOCITY = 50.0
+@export var SPEED = 400.0
+const IN_AIR_SPEED = 200.0
+const DIVE_VELOCITY = 600.0
+const ROLL_VELOCITY = 100.0
 
 @export var jump_height : float
 @export var jump_time_to_peak : float

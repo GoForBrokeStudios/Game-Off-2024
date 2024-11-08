@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ygo361fam7ou"]
+
+[node name="Darkness" type="DirectionalLight2D"]
+energy = 0.4
+blend_mode = 1
