@@ -50,6 +50,9 @@ _data = {
 
 [node name="level_1" instance=ExtResource("1_8rpjg")]
 
+[node name="Player" parent="." index="3"]
+position = Vector2(-713, 272)
+
 [node name="Goal" parent="." index="4"]
 position = Vector2(438, 248)
 

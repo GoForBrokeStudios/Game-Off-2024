@@ -5,6 +5,9 @@
 
 [node name="level_2" instance=ExtResource("1_6esfk")]
 
+[node name="Player" parent="." index="3"]
+position = Vector2(-651, 276)
+
 [node name="Goal" parent="." index="4"]
 position = Vector2(-58, -337)
 

@@ -7,7 +7,7 @@ class_name PlayerController
 
 @export var SPEED = 400.0
 const IN_AIR_SPEED = 200.0
-const DIVE_VELOCITY = 600.0
+const DIVE_VELOCITY = 1000.0
 const ROLL_VELOCITY = 100.0
 
 @export var jump_height : float
