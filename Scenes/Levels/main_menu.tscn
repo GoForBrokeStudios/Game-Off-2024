@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3d0tllrhtpux"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ipfst"]
+[ext_resource type="PackedScene" uid="uid://d338oxoi3k48c" path="res://Scenes/transition_scenes.tscn" id="2_p42yf"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_ipfst")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.242508, 4.47857e-05, 0.246665, 1)
+
+[node name="Play" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="TransitionScenes" parent="CanvasLayer" instance=ExtResource("2_p42yf")]
+
+[connection signal="button_down" from="CanvasLayer/Play" to="." method="_on_play_button_down"]

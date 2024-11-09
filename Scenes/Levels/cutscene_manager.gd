@@ -1,17 +1,15 @@
 extends AnimationPlayer
 
-var darkness
+@onready var darkness = $Darkness
 var torches
 
 @export var max_darkness = 1
 @export var min_darkness = 0.6
 
-func _ready():
-	darkness = %Darkness
-	torches = get_tree().get_nodes_in_group("torches")
-
 func start_intro():
 	play("start")
+	
+	torches = get_tree().get_nodes_in_group("torches")
 	
 func toggle_torches():
 	for torch in torches:

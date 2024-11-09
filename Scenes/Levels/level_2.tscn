@@ -17,5 +17,8 @@ tile_map_data = PackedByteArray("AADw/wUAAAABAAIAAADw/wYAAAAAAAAAAADx/wUAAAABAAI
 [node name="SecretArea" parent="TileMap" index="2"]
 tile_map_data = PackedByteArray()
 
+[node name="Darkness" parent="." index="6"]
+visible = false
+
 [node name="Torch" parent="." index="7" groups=["torches"] instance=ExtResource("3_46jcq")]
 position = Vector2(604, 167)

@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c54ggyhxxgh08" path="res://Scenes/Objects/torch.tscn" id="2_4vlpi"]
 [ext_resource type="Script" path="res://Scenes/Levels/cutscene_manager.gd" id="3_6xm3b"]
 
+[sub_resource type="Animation" id="Animation_dlpja"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_6wfsb"]
 resource_name = "start"
 length = 3.0
@@ -39,9 +42,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_dlpja"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8hjfd"]
 _data = {
 "RESET": SubResource("Animation_dlpja"),
@@ -49,9 +49,6 @@ _data = {
 }
 
 [node name="level_1" instance=ExtResource("1_8rpjg")]
-
-[node name="TransitionScenes" parent="." index="1" node_paths=PackedStringArray("cutscene_manager")]
-cutscene_manager = NodePath("../StartCutscene")
 
 [node name="Goal" parent="." index="4"]
 position = Vector2(438, 248)
@@ -79,7 +76,6 @@ position = Vector2(-355, -339)
 position = Vector2(341, -345)
 
 [node name="Darkness" parent="." index="7"]
-unique_name_in_owner = true
 energy = 0.6
 
 [node name="StartCutscene" type="AnimationPlayer" parent="." index="8"]

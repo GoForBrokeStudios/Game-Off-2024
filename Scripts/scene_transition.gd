@@ -5,7 +5,7 @@ signal on_transition_finished
 var color_rect : ColorRect
 var anim_player : AnimationPlayer
 
-@export var cutscene_manager : AnimationPlayer
+#@export var cutscene_manager : AnimationPlayer
 
 func _ready():
 	color_rect = $ColorRect
@@ -20,7 +20,7 @@ func _on_animation_finished(anim_name):
 		anim_player.play("fade_to_normal")
 	elif anim_name == "fade_to_normal":
 		color_rect.visible = false
-		cutscene_manager.play("start")
+		#cutscene_manager.play("start")
 
 func transition():
 	color_rect.visible = true

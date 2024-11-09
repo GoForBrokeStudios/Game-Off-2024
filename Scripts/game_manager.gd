@@ -1,6 +1,6 @@
 extends Node
 
-var current_level : int = 1
+var current_level : int = 0
 var level_path : String = "res://Scenes/Levels/"
 
 var stopwatch
@@ -12,8 +12,9 @@ func _ready():
 func next_level():
 	current_level += 1
 	
-	stopwatch = get_tree().get_first_node_in_group("stopwatch")
-	stopwatch.stop()
+	if stopwatch:
+		stopwatch = get_tree().get_first_node_in_group("stopwatch")
+		stopwatch.stop()
 	
 	TransitionScenes.transition()
 	await TransitionScenes.on_transition_finished
