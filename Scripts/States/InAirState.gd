@@ -35,6 +35,7 @@ func update(_delta:float):
 		get_parent().change_state(self, "JumpState")
 		
 	if Input.is_action_just_pressed("Dive") && player.velocity.x != 0:
+		player.dive_sound.play()
 		player.last_direction = direction
 		get_parent().change_state(self, "DiveState")
 	

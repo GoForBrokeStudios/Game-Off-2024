@@ -25,6 +25,9 @@ var jump_buffer: bool = false
 
 @export var camera: Camera2D
 
+@onready var dive_sound = $SFX/Dive
+@onready var jump_sound = $SFX/Jump
+
 var direction
 var last_direction
 

@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.242508, 4.47857e-05, 0.246665, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Play" type="Button" parent="CanvasLayer"]
 anchors_preset = 8
@@ -21,10 +21,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -94.0
+offset_top = -48.5
+offset_right = 94.0
+offset_bottom = 48.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bwd5gl3raybvo"]
+[gd_scene load_steps=35 format=3 uid="uid://bwd5gl3raybvo"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6sjgq"]
 [ext_resource type="Texture2D" uid="uid://ch478i58ato8b" path="res://Graphics/adventurer-v1.5-Sheet.png" id="2_dpg45"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://Scripts/States/RollState.gd" id="9_6j2xk"]
 [ext_resource type="Script" path="res://Scripts/States/WallSlideState.gd" id="10_etbq6"]
 [ext_resource type="Script" path="res://Scripts/States/WallJumpState.gd" id="11_jvi23"]
+[ext_resource type="AudioStream" uid="uid://b6lolbcueeqhr" path="res://SFX/dive.wav" id="14_jsxmt"]
+[ext_resource type="AudioStream" uid="uid://k22efhfala3x" path="res://SFX/jump.wav" id="15_q47r6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hl3kx"]
 atlas = ExtResource("4_8755e")
@@ -233,6 +235,14 @@ wait_time = 0.4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallJumpArea"]
 position = Vector2(-2.69231, 3.07692)
 shape = SubResource("RectangleShape2D_k1qk6")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Dive" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("14_jsxmt")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("15_q47r6")
 
 [connection signal="timeout" from="StateMachine/WallJumpState/WallJumpTimer" to="." method="_on_wall_jump_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WallJumpState/WallJumpTimer" to="StateMachine/WallJumpState" method="_on_wall_jump_timer_timeout"]
