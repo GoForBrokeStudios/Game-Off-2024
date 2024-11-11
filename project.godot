@@ -20,10 +20,16 @@ config/icon="res://icon.svg"
 GameManager="*res://Scripts/game_manager.gd"
 TransitionScenes="res://Scenes/transition_scenes.tscn"
 CustsceneManager="*res://Scenes/custscene_manager.tscn"
+Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
+PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
 
 [display]
 
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg")
 
 [input]
 
@@ -52,6 +58,10 @@ Dive={
 [layer_names]
 
 2d_physics/layer_17="transitions"
+
+[quiver]
+
+general/auth_token="61iU5k2JVToLcod1oyEtIzRkb2P1EDyAiNlYtokS"
 
 [rendering]
 
