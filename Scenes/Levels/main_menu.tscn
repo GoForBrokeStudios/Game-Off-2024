@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3d0tllrhtpux"]
+[gd_scene load_steps=2 format=3 uid="uid://c3d0tllrhtpux"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ipfst"]
-[ext_resource type="PackedScene" uid="uid://d338oxoi3k48c" path="res://Scenes/transition_scenes.tscn" id="2_p42yf"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_ipfst")
@@ -29,7 +28,5 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
-
-[node name="TransitionScenes" parent="CanvasLayer" instance=ExtResource("2_p42yf")]
 
 [connection signal="button_down" from="CanvasLayer/Play" to="." method="_on_play_button_down"]
