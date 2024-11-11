@@ -25,3 +25,9 @@ func _on_animation_finished(anim_name):
 func transition():
 	color_rect.visible = true
 	anim_player.play("fade_to_black")
+
+func score_count_animation(label : Label, count : int, duration : float):
+	for i in count + 1:
+		label.text = str(i)
+	
+	await get_tree().create_timer(duration).timeout
