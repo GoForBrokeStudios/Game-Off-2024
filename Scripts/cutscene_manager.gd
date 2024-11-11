@@ -59,14 +59,13 @@ func _on_next_level_pressed() -> void:
 
 
 func _on_submit_b_pressed() -> void:
-	var stopwatch = get_tree().get_first_node_in_group("stopwatch")
 	player_name = username_input.text
+	GameManager.submit_player_score(player_name)
+	#var leaderboard = await Leaderboards.get_scores("echoes-from-below-level-1-unwQ")
+	#print(leaderboard[0]["score"])
 	
-	var leaderboard = await Leaderboards.get_scores("echoes-from-below-level-1-unwQ")
-	print(leaderboard.get("scores")[0])
-	
-	await Leaderboards.post_guest_score("echoes-from-below-level-1-unwQ", snapped(stopwatch.time, 0.001), player_name)
-	get_tree().reload_current_scene()
+	#await Leaderboards.post_guest_score("echoes-from-below-level-1-unwQ", 300, player_name)
+	#get_tree().reload_current_scene()
 
 
 func _on_line_edit_text_submitted(new_text: String) -> void:

@@ -22,6 +22,7 @@ TransitionScenes="res://Scenes/transition_scenes.tscn"
 CustsceneManager="*res://Scenes/custscene_manager.tscn"
 Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
 PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
 [display]
 
