@@ -242,7 +242,7 @@ grow_vertical = 2
 
 [node name="YourScore" type="Label" parent="Level Complete/Scores/Player Score"]
 layout_mode = 2
-text = "Your Score: "
+text = "Your Time: "
 label_settings = SubResource("LabelSettings_e316y")
 
 [node name="Timer" type="Label" parent="Level Complete/Scores/Player Score"]
@@ -269,7 +269,7 @@ grow_vertical = 2
 
 [node name="HighScore" type="Label" parent="Level Complete/Scores/High Score"]
 layout_mode = 2
-text = "High Score: "
+text = "Best Score: "
 label_settings = SubResource("LabelSettings_e316y")
 
 [node name="Timer" type="Label" parent="Level Complete/Scores/High Score"]

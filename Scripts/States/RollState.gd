@@ -24,7 +24,7 @@ func update(delta:float):
 	var last_direction = player.last_direction
 	
 	if (last_direction > 0 && player.velocity.x > 0) or (last_direction < 0 && player.velocity.x < 0):
-		player.velocity.x += -last_direction * 200.0 * delta
+		player.velocity.x += -last_direction * 300.0 * delta
 	else:
 		get_parent().change_state(self, "IdleState")
 		

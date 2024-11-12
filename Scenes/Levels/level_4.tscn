@@ -4,10 +4,10 @@
 
 [node name="level_4" instance=ExtResource("1_0bee4")]
 
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="2"]
 position = Vector2(-715, 273)
 
-[node name="Goal" parent="." index="4"]
+[node name="Goal" parent="." index="3"]
 position = Vector2(-695, -404)
 
 [node name="Background" parent="TileMap" index="0"]
