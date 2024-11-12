@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bwd5gl3raybvo"]
+[gd_scene load_steps=36 format=3 uid="uid://bwd5gl3raybvo"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6sjgq"]
 [ext_resource type="Texture2D" uid="uid://ch478i58ato8b" path="res://Graphics/adventurer-v1.5-Sheet.png" id="2_dpg45"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/States/IdleState.gd" id="4_27klh"]
 [ext_resource type="Texture2D" uid="uid://d2aukhidhmlkj" path="res://Sprites/Player Walk 64x64-Sheet.png" id="4_8755e"]
 [ext_resource type="Script" path="res://Scripts/States/WalkState.gd" id="5_w3fu1"]
+[ext_resource type="Script" path="res://Scripts/States/PauseState.gd" id="6_1s6mr"]
 [ext_resource type="Script" path="res://Scripts/States/JumpState.gd" id="6_ifv8m"]
 [ext_resource type="Script" path="res://Scripts/States/InAirState.gd" id="7_jkb0k"]
 [ext_resource type="Script" path="res://Scripts/States/DiveState.gd" id="8_lsqns"]
@@ -190,8 +191,13 @@ position = Vector2(-4, 1)
 shape = SubResource("CapsuleShape2D_2tbhr")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
 script = ExtResource("3_3veec")
 initial_state = NodePath("IdleState")
+
+[node name="PauseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
+script = ExtResource("6_1s6mr")
+sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_27klh")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu4xulxr7x68p"]
+[gd_scene load_steps=13 format=3 uid="uid://cu4xulxr7x68p"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene_manager.gd" id="1_eukk8"]
+[ext_resource type="FontFile" uid="uid://odu0arfkvu4s" path="res://Fonts/PressStart2P-Regular.ttf" id="2_dnu1n"]
 
 [sub_resource type="Animation" id="Animation_a8dgq"]
 length = 0.001
@@ -19,31 +20,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Level Complete/Title:visible")
+tracks/1/path = NodePath("Level Complete/Scores:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Level Complete/Timer:visible")
+tracks/2/path = NodePath("Level Start/ColorRect:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Level Complete/Buttons/Next Level:visible")
+tracks/3/path = NodePath("Level Complete/Scores/High Score/Timer/NewHighScore:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -52,34 +53,10 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Level Complete/Buttons/Main Menu:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Level Start/ColorRect:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_71kjq"]
 resource_name = "level_complete"
-length = 5.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,64 +72,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Level Complete/Title:visible")
+tracks/1/path = NodePath("Level Complete/Scores:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.76667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 1, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1161, 0), Vector2(1161, 0), Vector2(0, 0)]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Level Complete/Timer:visible")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"reset_score_labels"
+}, {
 "args": [],
 "method": &"set_score_count"
 }]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Level Complete/Buttons/Next Level:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Level Complete/Buttons/Main Menu:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_k06nn"]
@@ -169,73 +113,54 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Level Complete/Title:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+
+[sub_resource type="Animation" id="Animation_ntcgb"]
+resource_name = "new_high_score"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level Complete/Scores/High Score/Timer/NewHighScore:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Level Complete/Timer:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Level Complete/Buttons/Next Level:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Level Complete/Buttons/Main Menu:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ufsxn"]
 _data = {
 "RESET": SubResource("Animation_a8dgq"),
 "level_complete": SubResource("Animation_71kjq"),
-"level_start": SubResource("Animation_k06nn")
+"level_start": SubResource("Animation_k06nn"),
+"new_high_score": SubResource("Animation_ntcgb")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_1fnfh"]
-font_size = 60
-outline_size = 15
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 12
+[sub_resource type="LabelSettings" id="LabelSettings_enkhb"]
+font = ExtResource("2_dnu1n")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e316y"]
+font = ExtResource("2_dnu1n")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_152rk"]
-font_size = 50
+font = ExtResource("2_dnu1n")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j34vo"]
+font = ExtResource("2_dnu1n")
+font_color = Color(0.628466, 0.628466, 0, 1)
 
 [sub_resource type="Theme" id="Theme_7y7h3"]
-default_font_size = 20
+default_font = ExtResource("2_dnu1n")
+default_font_size = 12
+/colors/color = Color(0, 0, 0, 1)
+/styles/color = null
 
 [node name="Custscene Manager" type="CanvasLayer"]
 script = ExtResource("1_eukk8")
@@ -254,41 +179,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Title" type="Label" parent="Level Complete"]
-visible = false
-z_index = 101
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -220.0
-offset_top = 156.0
-offset_right = 242.0
-offset_bottom = 239.0
-grow_horizontal = 2
-text = "Level Complete!"
-label_settings = SubResource("LabelSettings_1fnfh")
-
-[node name="Timer" type="Label" parent="Level Complete"]
-visible = false
-z_index = 101
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = -27.0
-offset_right = 81.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "00:00:000"
-label_settings = SubResource("LabelSettings_152rk")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ColorRect" type="ColorRect" parent="Level Complete"]
 modulate = Color(1, 1, 1, 0)
 z_index = 100
@@ -301,80 +191,163 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Buttons" type="Control" parent="Level Complete"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="Next Level" type="Button" parent="Level Complete/Buttons"]
-visible = false
-z_index = 105
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 410.0
-offset_top = 363.0
-offset_right = 500.0
-offset_bottom = 394.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.48, 1.4)
-text = "Next Level"
-
-[node name="Main Menu" type="Button" parent="Level Complete/Buttons"]
-visible = false
+[node name="Scores" type="Control" parent="Level Complete"]
 z_index = 101
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 563.0
-offset_top = 363.0
-offset_right = 659.0
-offset_bottom = 394.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.48, 1.4)
-text = "Main Menu"
-
-[node name="Leaderboard" type="Control" parent="."]
-z_index = 1001
-layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1161.0
+offset_right = 1161.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Leaderboard"]
+[node name="ColorRect" type="ColorRect" parent="Level Complete/Scores"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 107.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Level Complete/Scores"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_top = 166.0
+offset_right = 374.0
+offset_bottom = 216.0
+grow_horizontal = 2
+text = "Level Completed"
+label_settings = SubResource("LabelSettings_enkhb")
+
+[node name="Player Score" type="HBoxContainer" parent="Level Complete/Scores"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.5
+offset_top = -62.0
+offset_right = 329.5
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YourScore" type="Label" parent="Level Complete/Scores/Player Score"]
+layout_mode = 2
+text = "Your Score: "
+label_settings = SubResource("LabelSettings_e316y")
+
+[node name="Timer" type="Label" parent="Level Complete/Scores/Player Score"]
+z_index = 103
+layout_mode = 2
+text = "00:00:000"
+label_settings = SubResource("LabelSettings_152rk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="High Score" type="HBoxContainer" parent="Level Complete/Scores"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.5
+offset_top = -1.0
+offset_right = 329.5
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HighScore" type="Label" parent="Level Complete/Scores/High Score"]
+layout_mode = 2
+text = "High Score: "
+label_settings = SubResource("LabelSettings_e316y")
+
+[node name="Timer" type="Label" parent="Level Complete/Scores/High Score"]
+z_index = 101
+layout_mode = 2
+text = "00:00:000"
+label_settings = SubResource("LabelSettings_152rk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewHighScore" type="Label" parent="Level Complete/Scores/High Score/Timer"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -92.5
-offset_top = -180.0
-offset_right = 106.5
-offset_bottom = -140.0
+offset_left = -31.5
+offset_top = 5.0
+offset_right = 208.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "New High Score!"
+label_settings = SubResource("LabelSettings_j34vo")
+uppercase = true
+
+[node name="Leaderboard Submission" type="HBoxContainer" parent="Level Complete/Scores"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -204.5
+offset_top = -255.0
+offset_right = 195.5
+offset_bottom = -219.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="LineEdit" type="LineEdit" parent="Leaderboard/HBoxContainer"]
+[node name="PlayerNameInput" type="LineEdit" parent="Level Complete/Scores/Leaderboard Submission"]
 layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Player Name"
+max_length = 10
 
-[node name="submit_b" type="Button" parent="Leaderboard/HBoxContainer"]
+[node name="Submit" type="Button" parent="Level Complete/Scores/Leaderboard Submission"]
 layout_mode = 2
+size_flags_horizontal = 10
 theme = SubResource("Theme_7y7h3")
-text = "Submit"
+text = "Submit Your Score"
+
+[node name="Buttons" type="HBoxContainer" parent="Level Complete/Scores"]
+z_index = 1007
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.5
+offset_top = -194.0
+offset_right = 79.5
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Next Level" type="Button" parent="Level Complete/Scores/Buttons"]
+z_index = 110
+layout_mode = 2
+text = "Next Level"
+
+[node name="Main Menu" type="Button" parent="Level Complete/Scores/Buttons"]
+z_index = 101
+layout_mode = 2
+text = "Main Menu"
 
 [node name="Level Start" type="Control" parent="."]
 visible = false
@@ -396,6 +369,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="Level Complete/Buttons/Next Level" to="." method="_on_next_level_pressed"]
-[connection signal="text_submitted" from="Leaderboard/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="Leaderboard/HBoxContainer/submit_b" to="." method="_on_submit_b_pressed"]
+[connection signal="text_submitted" from="Level Complete/Scores/Leaderboard Submission/PlayerNameInput" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Level Complete/Scores/Leaderboard Submission/Submit" to="." method="_on_submit_b_pressed"]
+[connection signal="pressed" from="Level Complete/Scores/Buttons/Next Level" to="." method="_on_next_level_pressed"]
