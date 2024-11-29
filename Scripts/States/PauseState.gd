@@ -9,6 +9,8 @@ func _ready():
 func enter():
 	sprite.play("idle")
 	print("Enter " + name + " state")
+	
+	player.velocity = Vector2.ZERO
 
 func update(_delta):
 	pass

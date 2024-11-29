@@ -9,6 +9,9 @@ extends CanvasLayer
 @onready var high_score_label = $"Level Complete/Scores/High Score/Timer"
 @onready var new_high_score_label = $"Level Complete/Scores/High Score/Timer/NewHighScore"
 @onready var username_input = $"Level Complete/Scores/Leaderboard Submission/PlayerNameInput"
+
+@onready var bg_music = $"IHeardTheyCan'tHoldUs#12-Orchestrated"
+
 #@onready var darkness = $Darkness
 var torches
 
@@ -35,7 +38,8 @@ func set_score_count():
 	var stopwatch = get_tree().get_first_node_in_group("stopwatch")
 	score_label.text = stopwatch.time_to_string()
 	
-	high_score_label.text = await GameManager.retrieve_high_score()
+	#high_score_label.text = await GameManager.retrieve_high_score()
+	high_score_label.text = GameManager.time_to_string(GameManager.current_total_time)
 
 func reset_score_labels():
 	score_label.text = "00:00:000"

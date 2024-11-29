@@ -246,9 +246,11 @@ shape = SubResource("RectangleShape2D_k1qk6")
 
 [node name="Dive" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("14_jsxmt")
+volume_db = -10.0
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("15_q47r6")
+volume_db = -10.0
 
 [connection signal="timeout" from="StateMachine/WallJumpState/WallJumpTimer" to="." method="_on_wall_jump_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WallJumpState/WallJumpTimer" to="StateMachine/WallJumpState" method="_on_wall_jump_timer_timeout"]

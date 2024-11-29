@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu4xulxr7x68p"]
+[gd_scene load_steps=15 format=3 uid="uid://cu4xulxr7x68p"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene_manager.gd" id="1_eukk8"]
 [ext_resource type="FontFile" uid="uid://odu0arfkvu4s" path="res://Fonts/PressStart2P-Regular.ttf" id="2_dnu1n"]
+[ext_resource type="AudioStream" uid="uid://cnnagslffjnho" path="res://SFX/I Heard They Can't Hold Us #12 - Orchestrated.WAV" id="2_ub7aq"]
 
 [sub_resource type="Animation" id="Animation_a8dgq"]
 length = 0.001
@@ -162,8 +163,15 @@ default_font_size = 12
 /colors/color = Color(0, 0, 0, 1)
 /styles/color = null
 
+[sub_resource type="Theme" id="Theme_i43y6"]
+default_font = ExtResource("2_dnu1n")
+default_font_size = 28
+
 [node name="Custscene Manager" type="CanvasLayer"]
 script = ExtResource("1_eukk8")
+
+[node name="IHeardTheyCan\'tHoldUs#12-Orchestrated" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ub7aq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -201,6 +209,7 @@ offset_left = 1161.0
 offset_right = 1161.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.999179)
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Level Complete/Scores"]
@@ -242,7 +251,7 @@ grow_vertical = 2
 
 [node name="YourScore" type="Label" parent="Level Complete/Scores/Player Score"]
 layout_mode = 2
-text = "Your Time: "
+text = "Level Time: "
 label_settings = SubResource("LabelSettings_e316y")
 
 [node name="Timer" type="Label" parent="Level Complete/Scores/Player Score"]
@@ -269,7 +278,7 @@ grow_vertical = 2
 
 [node name="HighScore" type="Label" parent="Level Complete/Scores/High Score"]
 layout_mode = 2
-text = "Best Score: "
+text = "Total Time: "
 label_settings = SubResource("LabelSettings_e316y")
 
 [node name="Timer" type="Label" parent="Level Complete/Scores/High Score"]
@@ -299,6 +308,7 @@ label_settings = SubResource("LabelSettings_j34vo")
 uppercase = true
 
 [node name="Leaderboard Submission" type="HBoxContainer" parent="Level Complete/Scores"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -332,22 +342,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -110.5
-offset_top = -194.0
-offset_right = 79.5
-offset_bottom = -154.0
+offset_left = -250.0
+offset_top = -246.0
+offset_right = 250.0
+offset_bottom = -148.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="Next Level" type="Button" parent="Level Complete/Scores/Buttons"]
 z_index = 110
 layout_mode = 2
+theme = SubResource("Theme_i43y6")
 text = "Next Level"
-
-[node name="Main Menu" type="Button" parent="Level Complete/Scores/Buttons"]
-z_index = 101
-layout_mode = 2
-text = "Main Menu"
 
 [node name="Level Start" type="Control" parent="."]
 visible = false

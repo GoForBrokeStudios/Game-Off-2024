@@ -5,6 +5,8 @@ var level_path : String = "res://Scenes/Levels/"
 
 var stopwatch
 
+var current_total_time : float
+
 func _ready():
 	SilentWolf.configure({
 		"api_key": "DRN04tPFgJ2QYzYR385MXASLgOWPH6f8Qnwd9ID5",
@@ -16,6 +18,7 @@ func _ready():
 		"open_scene_on_close": "res://scenes/MainPage.tscn"
  	})
 
+	current_total_time = 0.0
 	stopwatch = get_tree().get_first_node_in_group("stopwatch")
 	
 
@@ -25,11 +28,15 @@ func level_complete():
 	stopwatch = get_tree().get_first_node_in_group("stopwatch")
 	stopwatch.stop()
 	
+	current_total_time += stopwatch.time
+	
 	CustsceneManager.level_complete_animation()
 
 func next_level():
 	if current_level != 0:
 		get_tree().get_first_node_in_group("player").get_node("StateMachine").force_change_state("IdleState")
+	else:
+		CustsceneManager.bg_music.play()
 		
 	current_level += 1
 	
