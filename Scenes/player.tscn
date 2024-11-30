@@ -1,11 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://bwd5gl3raybvo"]
+[gd_scene load_steps=39 format=3 uid="uid://bwd5gl3raybvo"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6sjgq"]
+[ext_resource type="Texture2D" uid="uid://di7jm4q3w0jjk" path="res://Sprites/Player Wall Jump 64x64-Sheet.png" id="2_0mu0t"]
 [ext_resource type="Texture2D" uid="uid://ch478i58ato8b" path="res://Graphics/adventurer-v1.5-Sheet.png" id="2_dpg45"]
 [ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="3_3veec"]
 [ext_resource type="Texture2D" uid="uid://bekhhahb08oim" path="res://Sprites/Player Idle 64x64-Sheet.png" id="3_bhq8e"]
 [ext_resource type="Script" path="res://Scripts/States/IdleState.gd" id="4_27klh"]
 [ext_resource type="Texture2D" uid="uid://d2aukhidhmlkj" path="res://Sprites/Player Walk 64x64-Sheet.png" id="4_8755e"]
+[ext_resource type="Texture2D" uid="uid://bldwgr50wqxhy" path="res://Sprites/Player Jump 64x64-Sheet.png" id="4_tedcu"]
 [ext_resource type="Script" path="res://Scripts/States/WalkState.gd" id="5_w3fu1"]
 [ext_resource type="Script" path="res://Scripts/States/PauseState.gd" id="6_1s6mr"]
 [ext_resource type="Script" path="res://Scripts/States/JumpState.gd" id="6_ifv8m"]
@@ -17,9 +19,9 @@
 [ext_resource type="AudioStream" uid="uid://b6lolbcueeqhr" path="res://SFX/dive.wav" id="14_jsxmt"]
 [ext_resource type="AudioStream" uid="uid://k22efhfala3x" path="res://SFX/jump.wav" id="15_q47r6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hl3kx"]
-atlas = ExtResource("4_8755e")
-region = Rect2(448, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jks52"]
+atlas = ExtResource("2_0mu0t")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x76pr"]
 atlas = ExtResource("3_bhq8e")
@@ -29,9 +31,13 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("3_bhq8e")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pb6t"]
-atlas = ExtResource("4_8755e")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t33kx"]
+atlas = ExtResource("4_tedcu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqwn6"]
+atlas = ExtResource("4_tedcu")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lem7n"]
 atlas = ExtResource("2_dpg45")
@@ -85,7 +91,7 @@ region = Rect2(448, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hl3kx")
+"texture": SubResource("AtlasTexture_jks52")
 }],
 "loop": true,
 "name": &"dive",
@@ -104,11 +110,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6pb6t")
+"texture": SubResource("AtlasTexture_t33kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqwn6")
 }],
 "loop": true,
 "name": &"in_air",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -178,8 +187,8 @@ jump_time_to_descend = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_10h70")
-animation = &"in_air"
-frame_progress = 0.588252
+animation = &"roll"
+frame_progress = 0.352283
 
 [node name="OlSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -246,7 +255,7 @@ shape = SubResource("RectangleShape2D_k1qk6")
 
 [node name="Dive" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("14_jsxmt")
-volume_db = -10.0
+volume_db = -20.0
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("15_q47r6")

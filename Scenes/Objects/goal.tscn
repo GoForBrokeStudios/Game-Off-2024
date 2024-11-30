@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://budqe1q26pyve"]
 
 [ext_resource type="Script" path="res://Scripts/goal.gd" id="1_b84vj"]
-[ext_resource type="Texture2D" uid="uid://q3fxuihnsii3" path="res://icon.svg" id="1_gnofi"]
+[ext_resource type="Texture2D" uid="uid://b1upvhoqe4kmt" path="res://Goal.png" id="2_xeeyk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r85lg"]
-size = Vector2(143, 142)
+size = Vector2(102, 101)
 
 [node name="Goal" type="Area2D"]
 collision_layer = 65536
@@ -12,10 +12,11 @@ script = ExtResource("1_b84vj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-texture = ExtResource("1_gnofi")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_xeeyk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_r85lg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

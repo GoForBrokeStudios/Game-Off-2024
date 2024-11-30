@@ -172,6 +172,7 @@ script = ExtResource("1_eukk8")
 
 [node name="IHeardTheyCan\'tHoldUs#12-Orchestrated" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ub7aq")
+volume_db = -10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
