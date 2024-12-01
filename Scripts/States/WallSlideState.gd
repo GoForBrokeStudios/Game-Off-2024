@@ -21,6 +21,8 @@ func update(_delta:float):
 		get_parent().change_state(self, "WallJumpState")
 	elif direction != player.last_direction && direction != 0:
 		get_parent().change_state(self, "InAirState")
+	elif player.is_on_floor():
+		get_parent().change_state(self, "IdleState")
 
 func exit():
 	player.fall_gravity = player.fall_gravity * 2.0

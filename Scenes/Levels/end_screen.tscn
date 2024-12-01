@@ -1,13 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://c3d0tllrhtpux"]
+[gd_scene load_steps=18 format=4 uid="uid://w0cgb7l34gop"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ipfst"]
-[ext_resource type="PackedScene" uid="uid://c54ggyhxxgh08" path="res://Scenes/Objects/torch.tscn" id="2_laf5a"]
-[ext_resource type="Texture2D" uid="uid://dfgf6nk12ivye" path="res://Sprites/Tileset 64x64.png" id="2_mfjn2"]
-[ext_resource type="PackedScene" uid="uid://ygo361fam7ou" path="res://Scenes/Darkness.tscn" id="3_iuawn"]
-[ext_resource type="FontFile" uid="uid://odu0arfkvu4s" path="res://Fonts/PressStart2P-Regular.ttf" id="5_qsv2p"]
+[ext_resource type="Script" path="res://Scripts/end_screen.gd" id="1_dqpeu"]
+[ext_resource type="Texture2D" uid="uid://dfgf6nk12ivye" path="res://Sprites/Tileset 64x64.png" id="4_d7gnh"]
+[ext_resource type="FontFile" uid="uid://odu0arfkvu4s" path="res://Fonts/PressStart2P-Regular.ttf" id="5_7mmtl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_28oah"]
-texture = ExtResource("2_mfjn2")
+texture = ExtResource("4_d7gnh")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/modulate = Color(0.277528, 0.277528, 0.277528, 1)
@@ -282,7 +280,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_28oah")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ocu5h"]
-font = ExtResource("5_qsv2p")
+font = ExtResource("5_7mmtl")
 font_size = 54
 shadow_size = 7
 shadow_color = Color(0.472007, 0.000176495, 0.479639, 1)
@@ -357,7 +355,7 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="Theme" id="Theme_igsf2"]
-default_font = ExtResource("5_qsv2p")
+default_font = ExtResource("5_7mmtl")
 default_font_size = 20
 Button/colors/font_color = Color(0.858824, 0.87451, 0.87451, 1)
 Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
@@ -382,35 +380,36 @@ Button/styles/hover = SubResource("StyleBoxFlat_nyihj")
 Button/styles/normal = SubResource("StyleBoxFlat_orvyo")
 Button/styles/pressed = SubResource("StyleBoxFlat_06fo5")
 
-[sub_resource type="LabelSettings" id="LabelSettings_24c2r"]
-font = ExtResource("5_qsv2p")
-font_size = 50
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_qd5fd"]
+font = ExtResource("5_7mmtl")
+font_size = 25
 
-[sub_resource type="LabelSettings" id="LabelSettings_idv3t"]
-font = ExtResource("5_qsv2p")
-font_size = 28
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_vw2c5"]
+font = ExtResource("5_7mmtl")
+font_size = 40
 
-[node name="MainMenu" type="Node2D"]
-script = ExtResource("1_ipfst")
+[sub_resource type="LabelSettings" id="LabelSettings_b70uh"]
+font = ExtResource("5_7mmtl")
+font_color = Color(0.628466, 0.628466, 0, 1)
 
-[node name="Torch" parent="." instance=ExtResource("2_laf5a")]
-position = Vector2(350, 300)
+[sub_resource type="Theme" id="Theme_c2dno"]
+default_font = ExtResource("5_7mmtl")
 
-[node name="Torch2" parent="." instance=ExtResource("2_laf5a")]
-position = Vector2(858, 300)
+[sub_resource type="Theme" id="Theme_kcfon"]
+default_font = ExtResource("5_7mmtl")
 
-[node name="Darkness" parent="." instance=ExtResource("3_iuawn")]
-position = Vector2(588, 432)
+[node name="EndScreen" type="Node2D"]
+script = ExtResource("1_dqpeu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TitleScreen" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer/TitleScreen"]
 position = Vector2(-1, 0)
@@ -422,45 +421,133 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 96.0
-offset_top = 127.0
-offset_right = 1014.0
-offset_bottom = 181.0
+offset_left = -456.0
+offset_top = 193.0
+offset_right = 462.0
+offset_bottom = 247.0
 grow_horizontal = 2
-text = "Echoes from Below"
+text = "YOU'VE ESCAPED!"
 label_settings = SubResource("LabelSettings_ocu5h")
+horizontal_alignment = 1
 
 [node name="Play" type="Button" parent="CanvasLayer/TitleScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 461.0
-offset_top = 316.0
-offset_right = 649.0
-offset_bottom = 413.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_igsf2")
-text = "Play"
-
-[node name="Controls" type="Button" parent="CanvasLayer/TitleScreen"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 876.0
-offset_top = 468.0
-offset_right = 1064.0
-offset_bottom = 565.0
+offset_left = -232.0
+offset_top = -138.0
+offset_right = -44.0
+offset_bottom = -41.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_igsf2")
-text = "Controls"
+text = "Retry"
+
+[node name="Your Time" type="HBoxContainer" parent="CanvasLayer/TitleScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = 15.0
+offset_right = 336.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HighScore" type="Label" parent="CanvasLayer/TitleScreen/Your Time"]
+layout_mode = 2
+text = "Your Time: "
+label_settings = SubResource("LabelSettings_qd5fd")
+
+[node name="Timer" type="Label" parent="CanvasLayer/TitleScreen/Your Time"]
+z_index = 101
+layout_mode = 2
+text = "00:00:000"
+label_settings = SubResource("LabelSettings_vw2c5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewHighScore" type="Label" parent="CanvasLayer/TitleScreen/Your Time/Timer"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.5
+offset_top = 5.0
+offset_right = 208.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "New High Score!"
+label_settings = SubResource("LabelSettings_b70uh")
+uppercase = true
+
+[node name="Leaderboard" type="Button" parent="CanvasLayer/TitleScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1106.0
+offset_top = -138.0
+offset_right = -858.0
+offset_bottom = -41.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_igsf2")
+text = "Leaderboard"
+
+[node name="Leaderboard User" type="HBoxContainer" parent="CanvasLayer/TitleScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 5.0
+offset_right = 20.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/TitleScreen/Leaderboard User"]
+layout_mode = 2
+theme = SubResource("Theme_c2dno")
+placeholder_text = "NICKNAME"
+max_length = 8
+expand_to_text_length = true
+
+[node name="Button" type="Button" parent="CanvasLayer/TitleScreen/Leaderboard User"]
+layout_mode = 2
+theme = SubResource("Theme_kcfon")
+text = "Submit Time"
+
+[node name="system_input" type="Label" parent="CanvasLayer/TitleScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = 47.0
+offset_right = 116.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -471,112 +558,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Controls" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 51.0
-offset_top = 4.0
-offset_right = 51.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.92, 1)
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Controls"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 29.0
-offset_right = 23.0
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.96, 0.92)
-
-[node name="title" type="Label" parent="CanvasLayer/Controls"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -116.0
-offset_right = 200.0
-offset_bottom = -66.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Controls"
-label_settings = SubResource("LabelSettings_24c2r")
-
-[node name="move" type="Label" parent="CanvasLayer/Controls"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -40.0
-offset_right = 200.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Move: A & D"
-label_settings = SubResource("LabelSettings_idv3t")
-horizontal_alignment = 1
-
-[node name="jump" type="Label" parent="CanvasLayer/Controls"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -3.0
-offset_right = 200.0
-offset_bottom = 47.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Jump: Spacebar"
-label_settings = SubResource("LabelSettings_idv3t")
-horizontal_alignment = 1
-
-[node name="dive" type="Label" parent="CanvasLayer/Controls"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = 36.0
-offset_right = 224.0
-offset_bottom = 86.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Dive: Left-Click"
-label_settings = SubResource("LabelSettings_idv3t")
-horizontal_alignment = 1
-
-[node name="close_controls" type="Button" parent="CanvasLayer/Controls"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -67.0
-offset_top = 52.0
-offset_right = -59.0
-offset_bottom = 60.0
-grow_horizontal = 0
-text = "X"
-
-[connection signal="button_down" from="CanvasLayer/TitleScreen/Play" to="." method="_on_play_button_down"]
-[connection signal="pressed" from="CanvasLayer/TitleScreen/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="CanvasLayer/Controls/close_controls" to="." method="_on_close_controls_pressed"]
+[connection signal="pressed" from="CanvasLayer/TitleScreen/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/TitleScreen/Leaderboard" to="." method="_on_leaderboard_pressed"]
+[connection signal="pressed" from="CanvasLayer/TitleScreen/Leaderboard User/Button" to="." method="_on_button_pressed"]

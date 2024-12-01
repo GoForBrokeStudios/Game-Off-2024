@@ -41,10 +41,12 @@ func render_board(scores: Array, local_scores: Array) -> void:
 			add_no_scores_message()
 	if all_scores.is_empty():
 		for score in scores:
-			add_item(score.player_name, str(int(score.score)))
+			add_item(score.player_name, str(score.score))
 	else:
-		for score in all_scores:
-			add_item(score.player_name, str(int(score.score)))
+		for i in range(all_scores.size(), 0, -1):
+			add_item(all_scores[i - 1].player_name, str(all_scores[i - 1].score))
+		#for score in all_scores:
+			#add_item(score.player_name, str(int(score.score)))
 
 
 func is_default_leaderboard(ld_config: Dictionary) -> bool:
@@ -88,7 +90,7 @@ func add_item(player_name: String, score_value: String) -> void:
 	var item = ScoreItem.instantiate()
 	list_index += 1
 	item.get_node("PlayerName").text = str(list_index) + str(". ") + player_name
-	item.get_node("Score").text = score_value
+	item.get_node("Score").text = GameManager.time_to_string(float(score_value))
 	item.offset_top = list_index * 100
 	$"Board/HighScores/ScoreItemContainer".add_child(item)
 
@@ -121,7 +123,7 @@ func clear_leaderboard() -> void:
 
 
 func _on_CloseButton_pressed() -> void:
-	var scene_name = SilentWolf.scores_config.open_scene_on_close
+	var scene_name = "res://Scenes/Levels/end_screen.tscn"
 	SWLogger.info("Closing SilentWolf leaderboard, switching to scene: " + str(scene_name))
 	#global.reset()
 	get_tree().change_scene_to_file(scene_name)

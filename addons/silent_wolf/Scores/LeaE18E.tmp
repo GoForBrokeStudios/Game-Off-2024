@@ -63,8 +63,7 @@ layout_mode = 2
 [node name="CloseButton" parent="Board/CloseButtonContainer" instance=ExtResource("4")]
 custom_minimum_size = Vector2(600, 80)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_g00oi")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "Close Leaderboard"
 
 [connection signal="pressed" from="Board/CloseButtonContainer/CloseButton" to="." method="_on_CloseButton_pressed"]

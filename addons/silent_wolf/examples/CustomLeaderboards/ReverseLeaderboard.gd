@@ -17,7 +17,7 @@ func _ready():
 	else:
 		# use a signal to notify when the high scores have been returned, and show a "loading" animation until it's the case...
 		add_loading_scores_message()
-		var sw_result = await SilentWolf.Scores.get_high_scores().sw_get_scores_complete
+		var sw_result = await SilentWolf.Scores.get_scores().sw_get_scores_complete
 		scores = sw_result["scores"]
 		hide_message()
 		render_board(scores)
@@ -61,7 +61,7 @@ func sort_by_score(a: Dictionary, b: Dictionary) -> bool:
 
 
 func add_item(player_name: String, score_value: String) -> void:
-	var item = ScoreItem.instance()
+	var item = ScoreItem.instantiate()
 	list_index += 1
 	item.get_node("PlayerName").text = str(list_index) + str(". ") + player_name
 	item.get_node("Score").text = score_value

@@ -15,7 +15,7 @@ func _ready():
 	})
 
 	SilentWolf.configure_scores({
-		"open_scene_on_close": "res://scenes/MainPage.tscn"
+		"open_scene_on_close": "res://Scenes/Levels/end_screen.tscn"
  	})
 
 	current_total_time = 0.0
@@ -40,18 +40,18 @@ func next_level():
 		
 	current_level += 1
 	
-	var full_path = level_path + "level_" + str(current_level) + ".tscn"
+	var full_path = ""
+	if current_level == 10:
+		full_path = level_path + "end_screen" + ".tscn"
+	else:
+		full_path = level_path + "level_" + str(current_level) + ".tscn"
+	
 	get_tree().change_scene_to_file(full_path)
 	
 	CustsceneManager.level_start_animation()
 
 func submit_player_score(player_name : String):
-	var score = stopwatch.time
-	
-	# leaderboard variable is used to save to the correct level's leaderboard
-	var leaderboard = check_current_leaderboard()
-	
-	SilentWolf.Scores.save_score(player_name, score, leaderboard)
+	SilentWolf.Scores.save_score(player_name, current_total_time, "main")
 
 func retrieve_high_score() -> String:
 	# Sometimes we just have to make sure we have access to the stopwatch

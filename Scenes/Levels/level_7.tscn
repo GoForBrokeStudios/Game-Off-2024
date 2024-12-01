@@ -261,7 +261,7 @@ sources/0 = SubResource("TileSetAtlasSource_kuslk")
 zoom = Vector2(0.6, 0.6)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") groups=["player"] instance=ExtResource("3_8j1hr")]
-position = Vector2(-838, 272)
+position = Vector2(-4, 270)
 jump_height = 300.0
 camera = NodePath("../Camera2D")
 
